@@ -11,6 +11,7 @@
         pkgs = import nixpkgs {
           inherit system;
         };
+        zig = pkgs.zig_0_13;
         stdenv = pkgs.stdenv;
         treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
         vix = stdenv.mkDerivation {
@@ -20,7 +21,7 @@
           src = ./.;
 
           nativeBuildInputs = [
-            pkgs.zig_0_13.hook
+            zig.hook
           ];
 
           zigBuildFlags = [
@@ -49,13 +50,13 @@
         };
 
         devShells.default = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [
+          nativeBuildInputs = [
             # Compiler
-            zig_0_13
+            zig
 
             # LSP
-            zls
-            nil
+            pkgs.zls
+            pkgs.nil
           ];
 
           shellHook = ''
