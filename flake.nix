@@ -20,6 +20,10 @@
 
           src = ./.;
 
+          buildInputs = [
+            pkgs.nixel
+          ];
+
           nativeBuildInputs = [
             zig.hook
           ];
