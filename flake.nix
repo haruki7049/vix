@@ -61,6 +61,9 @@
             # LSP
             pkgs.zls
             pkgs.nil
+
+            # Vix's dependencies
+            pkgs.nixel
           ];
 
           shellHook = ''
